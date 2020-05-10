@@ -1,0 +1,39 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Books</h1>
+<ul>
+        <% data.book.forEach(res=>{%>
+<li><%=res.name %> && <%=res.description%></li>
+        <% }) %>
+    </ul>
+    <input type="text"  id="txtfor" />
+    <input type="button" id="button1" value="magic" />
+    </body>
+</html>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+    
+    $(document).ready(function(){
+
+        $("#button1").click(function(){
+  $.ajax({url:"/ejstutorial/getdeatils", success: function(result){
+
+    $("#txtfor").val(result);
+   // $("#div1").html(result);
+  },
+error:function(error){
+    $("#txtfor").val(error);
+}});
+  
+});
+
+    })
+</script>
