@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'testcred,passwordVariable: 'pass',usernameVariable: 'user')]) {
+        withCredentials([usernamePassword(credentialsId: 'testcred',passwordVariable: 'pass',usernameVariable: 'user')]) {
         echo "inside the test ${params.name}"
                                           echo "user ${user}"
                                           echo "pass ${pass}"
