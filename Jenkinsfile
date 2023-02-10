@@ -18,15 +18,24 @@ pipeline {
                                           echo "pass ${pass}"
                                           }
       }
-      
+    }
+      stage('master') {
+       when {
+         not{
+          expression {
+            env.BRANCH_NAME == 'test'
+          }
+         }
+        }
       steps {
         withCredentials([usernamePassword(credentialsId: 'testcred',passwordVariable: 'pass',usernameVariable: 'user')]) {
         echo "inside the test ${params.name}"
+          echo "the branch  name is not test" 
                                           echo "user ${user}"
                                           echo "pass ${pass}"
                                           }
       }
-    }
+      }
       stage('build') {
       steps {
         echo "inside the build ${params.age}"
