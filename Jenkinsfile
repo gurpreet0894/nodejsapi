@@ -6,6 +6,11 @@ pipeline {
   }
   stages {
     stage('test') {
+       when {
+          expression {
+            env.BRANCH_NAME = 'Master'
+          }
+        }
       steps {
         withCredentials([usernamePassword(credentialsId: 'testcred',passwordVariable: 'pass',usernameVariable: 'user')]) {
         echo "inside the test ${params.name}"
