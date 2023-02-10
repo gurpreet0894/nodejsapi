@@ -8,7 +8,7 @@ pipeline {
     stage('test') {
        when {
           expression {
-            env.BRANCH_NAME = 'test'
+            env.BRANCH_NAME == 'test'
           }
         }
       steps {
